@@ -5,7 +5,7 @@ namespace VotingApp.Controllers
     public class HomeController : Controller
     {
         public ActionResult Index() {
-            return View();
+            return View(HttpContext.Application["events"]);
         }
         [HttpPost]
         public ActionResult Index(Color color)
@@ -20,7 +20,7 @@ namespace VotingApp.Controllers
                 Votes.RecordVote(color);
             }
             ViewBag.SelectedColor = Session["Color"] = color;
-            return View();
+            return View(HttpContext.Application["events"]);
         }
     }
 }
